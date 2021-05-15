@@ -162,7 +162,6 @@ void MainWindow::keyPressEvent(QKeyEvent *e) {
 }
 
 void MainWindow::showSolution() {
-    solution* to_del = dialog;
     auto starting_city = ui->startingCityLine->text();
     bool contains = false;
     for (auto i : cities) {
@@ -181,7 +180,6 @@ void MainWindow::showSolution() {
     dialog = new solution(cities, roads, starting_city, this);
     connect(dialog, &solution::solved, this, &MainWindow::city_numeration);
     dialog->return_solution();
-    delete to_del;
     dialog->show();
 }
 
